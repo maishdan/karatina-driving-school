@@ -8,7 +8,15 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <header>
+  <header><!-- Add in header -->
+<button onclick="toggleDarkMode()" class="btn-glow" style="float:right;">🌓</button>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
+
     <div class="container">
       <div class="brand-logo">
   <img src="img/logo.png" alt="Karatina Driving School Logo" height="50" style="vertical-align: middle; margin-right: 10px;">

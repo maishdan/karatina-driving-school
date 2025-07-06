@@ -1,4 +1,111 @@
 /* Reset some default styles */
+/* ========== Sticky Navbar ========== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ========== Language & Currency Dropdowns ========== */
+.language-select, .currency-select {
+  background: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+/* ========== Glow & Hover Effects ========== */
+.btn-glow {
+  background: #007BFF;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 120, 255, 0.4);
+}
+
+.btn-glow:hover {
+  background: #0056b3;
+  box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ========== Course Cards Enhancements ========== */
+.course-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(to bottom right, #f5f9fc, #e9f0fb);
+  border-left: 5px solid #004080;
+}
+
+.course-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* ========== Testimonials Section ========== */
+.testimonials {
+  padding: 60px 20px;
+  background: linear-gradient(to right, #f5f9fc, #e2eaf7);
+  text-align: center;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* ========== Dark Mode Support ========== */
+body.dark-mode {
+  background: #111 !important;
+  color: #eee;
+}
+
+body.dark-mode header {
+  background-color: #000022;
+  color: #fff;
+}
+
+body.dark-mode .container,
+body.dark-mode .course-card,
+body.dark-mode .testimonial-card {
+  background: #1e1e1e !important;
+  color: #f5f5f5;
+  border-color: #004080;
+}
+
+body.dark-mode nav ul li a {
+  color: #ddd;
+}
+
+body.dark-mode nav ul li a.active,
+body.dark-mode nav ul li a:hover {
+  background-color: #003366;
+}
+
+body.dark-mode .btn-glow {
+  background-color: #0056b3;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+body.dark-mode footer {
+  background-color: #000;
+  color: #aaa;
+}
+
 * {
   margin: 0;
   padding: 0;

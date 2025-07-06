@@ -5,21 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact - Karatina Driving School</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('img/background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00e1ff;
+    }
+
+    .btn {
+      background: #00e1ff;
+      color: #000;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px #00e1ff80;
+    }
+
+    .btn:hover {
+      background: #007a8a;
+      color: #fff;
+      box-shadow: 0 0 25px #00e1ff;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #000;
+    }
+
+    form input:focus, form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px #00e1ff;
+    }
+
+    footer {
+      background: rgba(0,0,0,0.9);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 40px;
+    }
+
+    h3, h4 {
+      color: #00e1ff;
+      margin-top: 0;
+    }
+
+    iframe {
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    #chatbot {
+      position: fixed;
+      bottom: 0;
+      right: 10px;
+      width: 320px;
+      height: 500px;
+      border-radius: 15px 15px 0 0;
+      overflow: hidden;
+      box-shadow: 0 0 20px #00e1ff;
+      z-index: 999;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #chatbot {
+        width: 100%;
+        height: 300px;
+        right: 0;
+        border-radius: 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="container">
       <div class="brand-logo">
-  <img src="img/logo.png" alt="Karatina Driving School Logo" height="50" style="vertical-align: middle; margin-right: 10px;">
-  <img src="img/learner-l.png" alt="Learner L" height="40" style="vertical-align: middle;">
-  <span style="font-size: 1.8rem; font-weight: bold; color: white;">Karatina Driving School</span>
-</div>
-
+        <img src="img/logo.png" alt="Karatina Driving School Logo" height="50" style="vertical-align: middle; margin-right: 10px;">
+        <img src="img/learner-l.png" alt="Learner L" height="40" style="vertical-align: middle;">
+        <span style="font-size: 1.8rem; font-weight: bold; color: white;">Karatina Driving School</span>
+      </div>
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="courses.html">Courses</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
           <li><a href="register.html">Register</a></li>
           <li><a href="login.html">Login</a></li>
           <li><a href="about.html">About Us</a></li>
@@ -35,41 +158,42 @@
       <h3>Contact Us</h3>
       <p>If you have any questions or want to book a course, please fill out the form below or reach us with the contact info.</p>
 
-      <form id="contactForm" action="#" method="post" novalidate>
-        <label for="name">Full Name:</label><br />
-        <input type="text" id="name" name="name" placeholder="Your full name" required /><br /><br />
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <input type="text" id="name" name="name" placeholder="Your full name" required />
+        <input type="email" id="email" name="email" placeholder="Your email address" required />
+        <input type="text" id="subject" name="subject" placeholder="Subject of your message" required />
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required pattern="[0-9]{10,15}" />
+        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
 
-        <label for="email">Email:</label><br />
-        <input type="email" id="email" name="email" placeholder="Your email address" required /><br /><br />
-
-        <label for="phone">Phone Number:</label><br />
-        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required pattern="[0-9]{10,15}" /><br /><br />
-
-        <label for="message">Message:</label><br />
-        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea><br /><br />
+        <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div><br />
 
         <button type="submit" class="btn">Send Message</button>
+        <button onclick="window.location.href='book.html'" class="btn">📅 Book Appointment</button>
       </form>
 
       <h4>Contact Information</h4>
       <p>Email: info@karatinadrivingschool.co.ke</p>
       <p>Phone: +254 712 345 678</p>
       <p>Address: Karatina Town, Nyeri County, Kenya</p>
+      <iframe src="https://maps.google.com/maps?q=Karatina&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" allowfullscreen></iframe>
+      <p><a href="assets/karatina-brochure.pdf" target="_blank" class="btn">🧾 Download Our Brochure</a></p>
     </div>
   </section>
 
   <footer>
     <div class="container">
       <p>&copy; 2025 Karatina Driving School. All rights reserved.</p>
+      <p>🌐 All branches are currently online & accepting inquiries</p>
     </div>
   </footer>
 
+  <div id="chatbot">
+    <iframe src="kds-assistant.html" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+
   <script src="js/script.js"></script>
   <script>
-    // Simple form validation on submit
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
@@ -77,25 +201,23 @@
 
       if (!name || !email || !phone || !message) {
         alert('Please fill in all the fields.');
+        e.preventDefault();
         return;
       }
 
-      // Basic email validation
       const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
       if (!emailPattern.test(email)) {
         alert('Please enter a valid email address.');
+        e.preventDefault();
         return;
       }
 
-      // Phone number validation (only digits, length 10 to 15)
       const phonePattern = /^[0-9]{10,15}$/;
       if (!phonePattern.test(phone)) {
         alert('Please enter a valid phone number (10 to 15 digits).');
+        e.preventDefault();
         return;
       }
-
-      alert('Thank you for contacting us, ' + name + '! We will get back to you soon.');
-      this.reset(); // Clear the form
     });
   </script>
 </body>

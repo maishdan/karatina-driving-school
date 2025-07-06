@@ -1,61 +1,237 @@
-<!-- ========================= register.html ========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Register - Karatina Driving School</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f0f4ff, #d3e0ff);
+      transition: background 0.3s ease-in-out;
+    }
+
+    .dark-mode {
+      background-color: #111;
+      color: #eee;
+    }
+
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 1rem 0;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 8px #ffffffaa;
+    }
+
+    .theme-toggle {
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .dark-mode .theme-toggle {
+      color: #ffde59;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .container {
+      background: #1e1e1e;
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: box-shadow 0.2s ease-in-out;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      box-shadow: 0 0 5px 2px #007BFF;
+      border-color: #007BFF;
+    }
+
+    .btn {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+      box-shadow: 0 0 10px #007BFF;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #f5f5f5;
+      margin-top: 40px;
+    }
+
+    .dark-mode footer {
+      background: #1e1e1e;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="header-container">
       <div class="brand-logo">
-  <img src="img/logo.png" alt="Karatina Driving School Logo" height="50" style="vertical-align: middle; margin-right: 10px;">
-  <img src="img/learner-l.png" alt="Learner L" height="40" style="vertical-align: middle;">
-  <span style="font-size: 1.8rem; font-weight: bold; color: white;">Karatina Driving School</span>
-</div>
-
+        <img src="img/logo.png" alt="Karatina Driving School Logo" height="50">
+        <img src="img/learner-l.png" alt="Learner L" height="40">
+        <span style="font-size: 1.8rem; font-weight: bold;">K.D.S</span>
+      </div>
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="register.html" class="active">Register</a></li>
+          <li><a href="login.html">Login</a></li>
         </ul>
       </nav>
+      <div class="theme-toggle" onclick="toggleDarkMode()" title="Toggle Dark/Light Mode">
+        <i id="theme-icon" class="fas fa-moon"></i>
+      </div>
     </div>
   </header>
 
   <section class="about">
     <div class="container">
-      <h3>Student Registration</h3>
+      <h3 style="text-align:center; color:#004080;">Student Registration</h3>
+      <form method="POST" action="register.php" enctype="multipart/form-data">
+        <label>Full Name:</label>
+        <input type="text" name="fullname" required>
 
-      <form method="POST" action="register.php" style="max-width: 400px; margin: auto;">
-        <label for="name">Full Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" required>
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <label>Confirm Email:</label>
+        <input type="email" name="confirm_email" required>
 
-        <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="phone" name="phone" required><br><br>
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" required placeholder="e.g. +254712345678">
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <label>National ID / Passport No.:</label>
+        <input type="text" name="id_number" required>
+
+        <label>Country:</label>
+        <select name="country" required>
+          <option value="">Select Country</option>
+          <option value="KE">Kenya (+254)</option>
+          <option value="UG">Uganda (+256)</option>
+          <option value="TZ">Tanzania (+255)</option>
+          <option value="NG">Nigeria (+234)</option>
+          <option value="US">United States (+1)</option>
+          <option value="GB">United Kingdom (+44)</option>
+          <option value="IN">India (+91)</option>
+          <option value="DE">Germany (+49)</option>
+          <option value="FR">France (+33)</option>
+          <option value="CN">China (+86)</option>
+        </select>
+
+        <label>City:</label>
+        <input type="text" name="city" required>
+
+        <label>Upload Passport Photo:</label>
+        <input type="file" name="passport_photo" accept="image/*" required>
+
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" required>
+
+        <label>Gender:</label>
+        <select name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Prefer not to say</option>
+        </select>
+
+        <label>Preferred Course:</label>
+        <select name="course" required>
+          <option value="">Select Course</option>
+          <option value="Class B">Class B - Light Vehicle</option>
+          <option value="Class A">Class A - Motorcycle</option>
+          <option value="Class C">Class C - Commercial Truck</option>
+        </select>
+
+        <label>Preferred Branch:</label>
+        <input type="text" name="branch" placeholder="e.g. Karatina, Nyeri">
+
+        <label>Preferred Start Date:</label>
+        <input type="date" name="start_date">
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <label>Confirm Password:</label>
+        <input type="password" name="confirm_password" required>
+
+        <label><input type="checkbox" required> I accept the <a href="#">terms and privacy policy</a></label><br><br>
 
         <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div><br>
 
         <button type="submit" class="btn">Register</button>
 
-        <div class="login-link">
-          Already have an account? <a href="login.html">Login here</a>
-        </div>
+        <p class="login-link" style="text-align:center; margin-top:10px;">Already have an account? <a href="login.html">Login here</a></p>
       </form>
     </div>
   </section>
@@ -65,5 +241,15 @@
       <p>&copy; 2025 Karatina Driving School. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById('theme-icon');
+      body.classList.toggle('dark-mode');
+      icon.classList.toggle('fa-sun');
+      icon.classList.toggle('fa-moon');
+    }
+  </script>
 </body>
 </html>

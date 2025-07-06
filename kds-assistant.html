@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KDS Assistant - Karatina Driving School AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #111);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #00e1ff;
+      color: #000;
+      padding: 1rem 2rem;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .chat-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 80%;
+      box-shadow: 0 0 12px #00e1ff50;
+      line-height: 1.5;
+    }
+
+    .user-message {
+      align-self: flex-end;
+      background-color: #007a8a;
+      color: #fff;
+    }
+
+    .bot-message {
+      align-self: flex-start;
+      background-color: #1a1a1a;
+      border: 1px solid #00e1ff;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 10px;
+      background-color: #000;
+      border-top: 1px solid #222;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .input-area button {
+      background-color: #00e1ff;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00e1ff80;
+    }
+
+    .input-area button:hover {
+      background-color: #007a8a;
+      color: #fff;
+      box-shadow: 0 0 20px #00e1ff;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #111;
+      border-bottom: 1px solid #222;
+    }
+
+    .options select, .options button {
+      background-color: #00e1ff;
+      color: #000;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00e1ff60;
+    }
+
+    .options select:hover, .options button:hover {
+      background-color: #007a8a;
+      color: #fff;
+    }
+
+    .typing {
+      font-style: italic;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🤖 KDS Assistant - Ask Me Anything
+  </header>
+
+  <div class="options">
+    <select id="languageSelector">
+      <option value="en">🌍 English</option>
+      <option value="sw">🇰🇪 Swahili</option>
+      <option value="fr">🇫🇷 French</option>
+      <option value="ar">🇸🇦 Arabic</option>
+      <option value="zh">🇨🇳 Chinese</option>
+    </select>
+    <button onclick="exportChat()">🧾 Export Chat</button>
+    <button onclick="toggleTheme()">🎭 Toggle Theme</button>
+  </div>
+
+  <div class="chat-container" id="chat">
+    <div class="bot-message message">
+      Hi 👋, I'm <strong>KDS Assistant</strong>. I can help you with:
+      <ul>
+        <li>📅 Booking Lessons</li>
+        <li>💰 Fees & Courses</li>
+        <li>📝 Registration Requirements</li>
+        <li>🌍 Info in your language</li>
+        <li>🗓️ Schedules</li>
+        <li>💬 Feedback or Inquiries</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Type your question...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat");
+
+    function addMessage(content, sender = 'bot') {
+      const msg = document.createElement("div");
+      msg.className = `message ${sender}-message`;
+      msg.innerHTML = content;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage(text, 'user');
+      input.value = "";
+
+      setTimeout(() => {
+        // Simulate AI response (you will replace this with real API call)
+        const response = simulateAIResponse(text);
+        addMessage(response);
+      }, 1000);
+    }
+
+    function simulateAIResponse(input) {
+      if (input.toLowerCase().includes("book")) return "✅ Sure! What day and time works for your driving lesson?";
+      if (input.toLowerCase().includes("fee")) return "💰 Our Class B course costs KES 15,000. Want to see other packages?";
+      if (input.toLowerCase().includes("register")) return "📝 You'll need an ID copy, passport photo, and KRA PIN.";
+      return "🤖 I'm learning! Please ask another question or contact support.";
+    }
+
+    function exportChat() {
+      const text = Array.from(document.querySelectorAll('.message'))
+        .map(msg => msg.innerText).join("\n---\n");
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = "KDS_Assistant_Chat.txt";
+      a.click();
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+  <script src="js/kds-assistant.js"></script>
+</body>
+</html>
