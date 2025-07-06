@@ -178,6 +178,7 @@ footer {
   text-decoration: none;
   font-weight: bold;
 }
+
 /* ========== LOGIN PAGE ========== */
 body.login {
   display: flex;
