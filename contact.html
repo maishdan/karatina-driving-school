@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Karatina Driving School</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Karatina Driving School</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="register.php">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="container">
+      <h3>Contact Us</h3>
+      <p>If you have any questions or want to book a course, please fill out the form below or reach us with the contact info.</p>
+
+      <form id="contactForm" action="#" method="post" novalidate>
+        <label for="name">Full Name:</label><br />
+        <input type="text" id="name" name="name" placeholder="Your full name" required /><br /><br />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" placeholder="Your email address" required /><br /><br />
+
+        <label for="phone">Phone Number:</label><br />
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required pattern="[0-9]{10,15}" /><br /><br />
+
+        <label for="message">Message:</label><br />
+        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea><br /><br />
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <h4>Contact Information</h4>
+      <p>Email: info@karatinadrivingschool.co.ke</p>
+      <p>Phone: +254 712 345 678</p>
+      <p>Address: Karatina Town, Nyeri County, Kenya</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Karatina Driving School. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Simple form validation on submit
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !phone || !message) {
+        alert('Please fill in all the fields.');
+        return;
+      }
+
+      // Basic email validation
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      // Phone number validation (only digits, length 10 to 15)
+      const phonePattern = /^[0-9]{10,15}$/;
+      if (!phonePattern.test(phone)) {
+        alert('Please enter a valid phone number (10 to 15 digits).');
+        return;
+      }
+
+      alert('Thank you for contacting us, ' + name + '! We will get back to you soon.');
+      this.reset(); // Clear the form
+    });
+  </script>
+</body>
+</html>
