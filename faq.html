@@ -1,0 +1,71 @@
+<!-- ========================= faq.html ========================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | Karatina Driving School</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/faq.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand-logo">
+  <img src="img/logo.png" alt="Karatina Driving School Logo" height="50" style="vertical-align: middle; margin-right: 10px;">
+  <img src="img/learner-l.png" alt="Learner L" height="40" style="vertical-align: middle;">
+  <span style="font-size: 1.8rem; font-weight: bold; color: white;">Karatina Driving School</span>
+</div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <input type="text" id="faqSearch" placeholder="Search a question...">
+
+      <div id="faqContainer">
+        <div class="faq-item" data-category="financing">
+          <h4>How do I apply for driving school financing?</h4>
+          <p>You can apply via our <a href="apply-financing.html">Apply Financing</a> page. We support local and international financing programs.</p>
+        </div>
+        <div class="faq-item" data-category="payments">
+          <h4>Which payment methods are supported?</h4>
+          <p>We support M-Pesa, card payments (Visa/Mastercard), PayPal, Worldcoin, and Bitcoin.</p>
+        </div>
+        <div class="faq-item" data-category="courses">
+          <h4>Do you offer weekend classes?</h4>
+          <p>Yes! We offer evening and weekend driving classes for full-time workers and students.</p>
+        </div>
+        <div class="faq-item" data-category="international">
+          <h4>Can I register from outside Kenya?</h4>
+          <p>Yes! We welcome international students and provide remote consultation and e-learning options.</p>
+        </div>
+      </div>
+
+      <div class="feedback">
+        <p>Didn't find your answer? Ask <strong>KDS Assistant</strong> below or <a href="#">download full FAQ PDF</a>.</p>
+        <button class="btn">Chat with KDS Assistant</button>
+        <button class="btn" onclick="window.print()">Print this page</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Karatina Driving School. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

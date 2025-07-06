@@ -187,3 +187,21 @@ body.login {
   min-height: 100vh;
   background-color: #f5f5f5;
 }
+
+/* === Global Website Background === */
+body {
+  background: url('../img/background.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #f0f4f8; /* fallback */
+}
+.brand-logo img {
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .brand-logo span {
+    display: block;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+}
